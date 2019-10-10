@@ -1,7 +1,7 @@
-import * as pixi from "pixi.js";
+import * as pixi from "pixi.js-legacy";
 // override requires so that the local pixi-particles gets the pixi.js
 // from this test project, not from the top level
-require('override-require')((request:any) => request === 'pixi.js', () =>  pixi);
+require('override-require')((request:any) => request === 'pixi.js-legacy', () =>  pixi);
 import * as particles from "pixi-particles";
 
 const imagePaths = ["../../docs/examples/images/Sparks.png"];
@@ -100,7 +100,7 @@ window.onresize = function() {
 window.onresize(null);
 
 // Preload the particle images and create PIXI textures from it
-const urls = [];// imagePaths.slice();
+const urls = imagePaths.slice();
 urls.push("../../docs/examples/images/bg.png");
 const loader = pixi.loader;
 for(let i = 0; i < urls.length; ++i)
@@ -114,9 +114,9 @@ loader.load(function()
 	bg.tint = 0x000000;
 	stage.addChild(bg);
 	//collect the textures, now that they are all loaded
-	const art = imagePaths;// [];
-	// for(let i = 0; i < imagePaths.length; ++i)
-	// 	art.push(pixi.Texture.fromImage(imagePaths[i]));
+	const art = [];
+	for(let i = 0; i < imagePaths.length; ++i)
+		art.push(pixi.Texture.fromImage(imagePaths[i]));
 	// Create the new emitter and attach it to the stage
 	const emitterContainer = new pixi.Container();
 	stage.addChild(emitterContainer);

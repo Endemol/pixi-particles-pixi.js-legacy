@@ -1,7 +1,7 @@
-import * as pixi from "pixi.js";
+import * as pixi from "pixi.js-legacy";
 // override requires so that the local pixi-particles gets the pixi.js
 // from this test project, not from the top level
-require('override-require')((request:any) => request === 'pixi.js', () =>  pixi);
+require('override-require')((request:any) => request === 'pixi.js-legacy', () =>  pixi);
 import * as particles from "pixi-particles";
 
 const imagePaths = ["../../docs/examples/images/Sparks.png"];
